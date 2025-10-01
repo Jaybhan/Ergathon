@@ -1,8 +1,8 @@
-                                                <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amphibious Achievement Donation Tracker</title>
   <style>
     body {
@@ -27,9 +27,10 @@
       position: relative;
     }
     .progress-bar {
-      background-color: #007bff; /* Blue color */
+      background-color: #007bff;
       border-radius: 5px;
       height: 20px;
+      transition: width 0.5s ease;
     }
     .progress-tick {
       position: absolute;
@@ -51,15 +52,41 @@
       border-radius: 5px;
       margin-bottom: 20px;
     }
+    .leaderboard {
+      margin-bottom: 30px;
+    }
+    .leaderboard h2 {
+      margin-bottom: 10px;
+    }
+    .leaderboard ul {
+      list-style: none;
+      padding: 0;
+    }
+    .leaderboard li {
+      padding: 8px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="Amphibious Achievement Logo" class="logo", width="200">
+    <img src="logo.png" alt="Amphibious Achievement Logo" class="logo" width="200" />
     <h1>Amphibious Achievement Donation Tracker</h1>
-    <h1>Total: 500</h1>
+    <h1>Total Raised: $<span id="total-amount">0</span></h1>
+
+    <div class="leaderboard">
+      <h2>🏆 Top 3 Teams</h2>
+      <ul id="team-list">
+        <!-- Team donation rows will be added here dynamically -->
+      </ul>
+    </div>
+
     <div class="progress-container">
-      <div class="progress-bar" style="width: {{ progress }}%;"></div>
+      <div class="progress-bar" id="progress-bar"></div>
       <div class="progress-tick" style="left: 15%;"></div>
       <div class="progress-tick" style="left: 37.5%;"></div>
       <div class="progress-tick" style="left: 60%;"></div>
@@ -69,6 +96,7 @@
       <div class="progress-label" style="left: 72.7%;">$2000</div>
       <div class="progress-label" style="left: 90.9%;">$2500</div>
     </div>
+
     <div class="milestone-description">
       <strong>$750:</strong> Watch our Executive Directors get pied at Gala!
     </div>
@@ -84,19 +112,32 @@
   </div>
 
   <script>
-    // Total donations and milestones
-    const total = 500; // Change this value to the current total donations
-    const milestone1 = 750;
-    const milestone2 = 1250;
-    const milestone3 = 2000;
-    const milestone4 = 2500;
+    // Top 3 team donations (replace these values with real data)
+    const topTeams = [
+      { name: "Team RowBusters", amount: 200 },
+      { name: "Splash Squad", amount: 175 },
+      { name: "The Amphibians", amount: 125 }
+    ];
+
     const maxamt = 2750;
 
-    // Calculate progress percentage
-    const progress = Math.min((total / maxamt) * 100, 100);
+    // Calculate total
+    const total = topTeams.reduce((sum, team) => sum + team.amount, 0);
+
+    // Update total amount display
+    document.getElementById("total-amount").textContent = total;
+
+    // Update team list
+    const teamList = document.getElementById("team-list");
+    topTeams.forEach(team => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span>${team.name}</span><span>$${team.amount}</span>`;
+      teamList.appendChild(li);
+    });
 
     // Update progress bar
-    document.querySelector('.progress-bar').style.width = progress + '%';
+    const progress = Math.min((total / maxamt) * 100, 100);
+    document.getElementById("progress-bar").style.width = progress + "%";
   </script>
 </body>
 </html>
