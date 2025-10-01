@@ -21,6 +21,11 @@
     }
     h1 {
       text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      font-size: 1.1em;
     }
     .leaderboard {
       margin-top: 30px;
@@ -52,6 +57,10 @@
     <img src="logo.png" alt="Amphibious Achievement Logo" class="logo" width="200" />
     <h1>Amphibious Achievement Donation Tracker</h1>
     <h1>Total Raised: $<span id="total-amount">0</span></h1>
+    
+    <p><strong>Top 8 teams get an erg!</strong> Donate at 
+      <a href="https://tinyurl.com/3wbjc8p7" target="_blank">https://tinyurl.com/3wbjc8p7</a>
+    </p>
 
     <div class="leaderboard">
       <h2>🏆 Top 3 Teams</h2>
@@ -62,7 +71,6 @@
   </div>
 
   <script>
-    // All team donations
     const allTeams = [
       { name: "Team RowBusters", amount: 200 },
       { name: "Splash Squad", amount: 175 },
@@ -72,14 +80,11 @@
       { name: "RowBots", amount: 50 }
     ];
 
-    // Calculate total from all teams
     const total = allTeams.reduce((sum, team) => sum + team.amount, 0);
     document.getElementById("total-amount").textContent = total;
 
-    // Get top 3 teams
     const topTeams = [...allTeams].sort((a, b) => b.amount - a.amount).slice(0, 3);
 
-    // Render top 3 teams
     const teamList = document.getElementById("team-list");
     topTeams.forEach(team => {
       const li = document.createElement("li");
