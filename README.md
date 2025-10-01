@@ -1,0 +1,2 @@
+# Ergathon
+Erg donation tracker
