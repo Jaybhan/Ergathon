@@ -1,0 +1,102 @@
+                                                <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amphibious Achievement Donation Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .progress-container {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .progress-bar {
+      background-color: #007bff; /* Blue color */
+      border-radius: 5px;
+      height: 20px;
+    }
+    .progress-tick {
+      position: absolute;
+      width: 2px;
+      background-color: #000;
+      height: 10px;
+      top: 5px;
+    }
+    .progress-label {
+      position: absolute;
+      top: 25px;
+      font-size: 12px;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+    .milestone-description {
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Amphibious Achievement Logo" class="logo", width="200">
+    <h1>Amphibious Achievement Donation Tracker</h1>
+    <h1>Total: 500</h1>
+    <div class="progress-container">
+      <div class="progress-bar" style="width: {{ progress }}%;"></div>
+      <div class="progress-tick" style="left: 15%;"></div>
+      <div class="progress-tick" style="left: 37.5%;"></div>
+      <div class="progress-tick" style="left: 60%;"></div>
+      <div class="progress-tick" style="left: 82.5%;"></div>
+      <div class="progress-label" style="left: 27.3%;">$750</div>
+      <div class="progress-label" style="left: 55.3%;">$1250</div>
+      <div class="progress-label" style="left: 72.7%;">$2000</div>
+      <div class="progress-label" style="left: 90.9%;">$2500</div>
+    </div>
+    <div class="milestone-description">
+      <strong>$750:</strong> Watch our Executive Directors get pied at Gala!
+    </div>
+    <div class="milestone-description">
+      <strong>$1250:</strong> A surprise Amphibz mascot will bring the roof down with their Gala dance moves! Who is under the disguise?
+    </div>
+    <div class="milestone-description">
+      <strong>$2000:</strong> No one is safe from the wrath of the pie– watch our entire Directors board get pied!
+    </div>
+    <div class="milestone-description">
+      <strong>$2500:</strong> Watch as our very own Executive Directors take the Under the Sea theme to the next level and jump in the Charles!
+    </div>
+  </div>
+
+  <script>
+    // Total donations and milestones
+    const total = 500; // Change this value to the current total donations
+    const milestone1 = 750;
+    const milestone2 = 1250;
+    const milestone3 = 2000;
+    const milestone4 = 2500;
+    const maxamt = 2750;
+
+    // Calculate progress percentage
+    const progress = Math.min((total / maxamt) * 100, 100);
+
+    // Update progress bar
+    document.querySelector('.progress-bar').style.width = progress + '%';
+  </script>
+</body>
+</html>
