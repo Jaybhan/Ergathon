@@ -112,22 +112,26 @@
   </div>
 
   <script>
-    // Top 3 team donations (replace these values with real data)
-    const topTeams = [
+    // All team donations (expand this list as needed)
+    const allTeams = [
       { name: "Team RowBusters", amount: 200 },
       { name: "Splash Squad", amount: 175 },
-      { name: "The Amphibians", amount: 125 }
+      { name: "The Amphibians", amount: 125 },
+      { name: "Erg Warriors", amount: 90 },
+      { name: "Fast Frogs", amount: 75 },
+      { name: "RowBots", amount: 50 }
     ];
 
     const maxamt = 2750;
 
-    // Calculate total
-    const total = topTeams.reduce((sum, team) => sum + team.amount, 0);
-
-    // Update total amount display
+    // Calculate total from all teams
+    const total = allTeams.reduce((sum, team) => sum + team.amount, 0);
     document.getElementById("total-amount").textContent = total;
 
-    // Update team list
+    // Get top 3 teams
+    const topTeams = [...allTeams].sort((a, b) => b.amount - a.amount).slice(0, 3);
+
+    // Render top 3 teams
     const teamList = document.getElementById("team-list");
     topTeams.forEach(team => {
       const li = document.createElement("li");
