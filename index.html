@@ -72,18 +72,19 @@
 
   <script>
     const allTeams = [
-      { name: "Team RowBusters", amount: 200 },
-      { name: "Splash Squad", amount: 175 },
-      { name: "The Amphibians", amount: 125 },
-      { name: "Erg Warriors", amount: 90 },
-      { name: "Fast Frogs", amount: 75 },
-      { name: "RowBots", amount: 50 }
+      { name: "Swim & Dive", amount: 200 },
+      { name: "Jay's Goofies", amount: 175 },
+      { name: "Women's Openweight Rowing", amount: 125 },
+      { name: "Kappa Sigma", amount: 90 },
+      { name: "Phi Beta Epsilon", amount: 75 },
+      { name: "Kappa Alpha Theta", amount: 50 },
+      { name: "Delta Tau Delta", amount: 50 }
     ];
 
     const total = allTeams.reduce((sum, team) => sum + team.amount, 0);
     document.getElementById("total-amount").textContent = total;
 
-    const topTeams = [...allTeams].sort((a, b) => b.amount - a.amount).slice(0, 3);
+    const topTeams = [...allTeams].sort((a, b) => b.amount - a.amount).slice(0, 8);
 
     const teamList = document.getElementById("team-list");
     topTeams.forEach(team => {
